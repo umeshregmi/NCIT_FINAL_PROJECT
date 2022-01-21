@@ -1,0 +1,20 @@
+{% extends 'core/base.html' %}
+
+{% block title %} Home {% endblock title %}
+
+{% block content %}
+    <div class="jumbotron">
+        {% for item in news %}
+            <h3>{{item.title}}</h3>
+            <h5>{{item.content}}</h5>
+            <small>{{item.date_posted}} - {{item.user.username}}</small>
+            {% if user.is_superuser or user.id == item.user.id %}
+                <a href="{% url 'edit-news' id=item.id %}">edit</a>
+                <a href="{% url 'delete-news' id=item.id %}">delete</a>
+            {% endif %}
+        {% endfor %}
+        <div>
+            <a href="{% url 'add-news' %}" class="btn btn-primary" style="margin-left: 40%;">Add News</a>
+        </div>
+    </div>
+{% endblock content %}

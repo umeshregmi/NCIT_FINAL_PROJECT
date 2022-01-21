@@ -1,0 +1,29 @@
+{% extends 'core/base.html' %}
+
+{% block title %} {% endblock title %}
+
+{% block content %}
+    <div class="jumbotron">
+        <form method="POST">
+            {% csrf_token %}
+              <div class="form-group">
+                <label for="username">Enter Username</label>
+                <input type="text" class="form-control" id="username" name="username">
+              </div>
+              <div class="form-group">
+                <label for="password">Enter Password </label>
+                <input type="password" class="form-control" id="password" name="password">
+              </div>
+            <button type="submit" class="btn btn-primary">Signin</button>
+          </form>
+          {% if messages %}
+            <div>
+              <ul>
+                {% for message in messages %}
+                  <li>{{message}}</li>
+                {% endfor %}
+              </ul>
+            </div>
+          {% endif %}   
+    </div>
+{% endblock content %}

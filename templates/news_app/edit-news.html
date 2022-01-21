@@ -1,0 +1,20 @@
+{% extends 'core/base.html' %}
+
+{% block title %} Edit News {% endblock title %}
+
+{% block content %}
+    <div class="jumbotron">
+        <form method="POST">
+            {% csrf_token %}
+            <div class="form-group">
+              <label for="title">Enter title</label>
+              <input type="text" class="form-control" id="title" name="title" value="{{news.title}}">
+            </div>
+            <div class="form-group">
+              <label for="content">Enter Content</label>
+              <input type="text" class="form-control" id="content" name="content" value="{{news.content}}">
+            </div>
+            <button type="submit" class="btn btn-primary">Add</button>
+          </form>
+    </div>
+{% endblock content %}
